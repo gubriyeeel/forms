@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import React, { useState } from "react";
 
 import { ErrorMessage } from "@hookform/error-message";
@@ -15,7 +13,7 @@ type Props = {
   options?: { value: string; label: string; id: string }[];
   label?: string;
   placeholder: string;
-  register: UseFormRegister<any>;
+  register: UseFormRegister<FieldValues>;
   name: string;
   errors: FieldErrors<FieldValues>;
   lines?: number;
@@ -52,7 +50,7 @@ const FormGenerator = ({
               form={form}
               defaultValue={defaultValue}
               {...register(name)}
-              className="pr-10"
+              className={type === "password" ? "pr-10" : "px-3"}
             />
             {type === "password" && (
               <button
