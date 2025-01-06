@@ -79,7 +79,7 @@ export function ProfileFormStep() {
 
       {isSubmitSuccessful && (
         <FormNotification
-          message="Successfully updated your profile"
+          message="Profile updated successfully"
           type="success"
         />
       )}
