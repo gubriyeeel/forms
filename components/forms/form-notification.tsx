@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { TriangleAlert, X } from "lucide-react";
+import { CircleCheck, TriangleAlert, X } from "lucide-react";
 import { useState } from "react";
 
 type Props = {
@@ -14,21 +14,28 @@ export function FormNotification({ message, type }: Props) {
 
   if (!isVisible) return null;
 
+  const isSuccess = type === "success";
+
   return (
     <div
       className={cn(
         "w-full flex items-center p-4 rounded-md",
-        type === "success"
+        isSuccess
           ? "text-emerald-500 bg-emerald-50"
           : "text-rose-500 bg-rose-50"
       )}
     >
-      <TriangleAlert size={16} className="mr-2" />
+      {isSuccess ? (
+        <CircleCheck size={16} className="mr-2" />
+      ) : (
+        <TriangleAlert size={16} className="mr-2" />
+      )}
+
       <p className="text-sm">{message}</p>
       <button
         className={cn(
           "ml-auto",
-          type === "success" ? "text-emerald-500" : "text-rose-500"
+          isSuccess ? "text-emerald-500" : "text-rose-500"
         )}
         onClick={() => setIsVisible(false)}
       >
